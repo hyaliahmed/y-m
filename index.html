@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#2b190d">
+<title>يوسف و مينا · دعوة عقد قران</title>
+<meta name="description" content="تتشرف عائلة آل معارج وعائلة آل الخزعلي بدعوتكم لحضور حفل عقد قران يوسف و مينا">
+<meta property="og:title" content="دعوة حفل عقد قران يوسف و مينا">
+<meta property="og:description" content="السبت ٧ تشرين الثاني ٢٠٢٦ · الساعة الخامسة مساءً">
+<meta property="og:image" content="media/t1-start.jpg">
+<link rel="preload" as="image" href="media/t1-start.jpg">
+<link rel="preload" as="font" type="font/otf" href="fonts/Milan-Display-Black-Swashes.otf" crossorigin>
+<style>
+/* ---------- fonts: Milan Display Swashes on every slide except the verse ---------- */
+@font-face{font-family:"Milan Display";src:url(fonts/Milan-Display-Black-Swashes.otf) format("opentype");font-display:swap}
+@font-face{font-family:"Amiri";src:url(fonts/Amiri-Regular.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Amiri";src:url(fonts/Amiri-Bold.woff2) format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Amiri Quran";src:url(fonts/AmiriQuran-Regular.woff2) format("woff2");font-display:swap}
+@font-face{font-family:"Aref Ruqaa";src:url(fonts/ArefRuqaa-Regular.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Aref Ruqaa";src:url(fonts/ArefRuqaa-Bold.woff2) format("woff2");font-weight:700;font-display:swap}
+:root{
+  --f-main:"Milan Display","Amiri","Times New Roman",serif;
+  --f-quran:"Amiri Quran","Amiri",serif;
+  --f-names:"Milan Display","Aref Ruqaa","Amiri",serif;
+  --gold:#c9a063; --gold-hi:#f3dcaa; --gold-lo:#8a5f2c; --ink:#4a2c15; --walnut:#24150b; --cream:#fff6e6;
+  --u:4px; /* 1% of the stage width, set by script */
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--walnut);overflow:hidden;overscroll-behavior:none;-webkit-tap-highlight-color:transparent}
+body{font-family:var(--f-main);font-synthesis:none;color:var(--ink);touch-action:manipulation}
+#backdrop{position:fixed;inset:0;background:center/cover no-repeat url(media/t1-start.jpg);filter:blur(28px) brightness(.55) saturate(1.1);transform:scale(1.15)}
+
+/* ---------- stage (9:16) and the hand-held camera layer ---------- */
+#stage{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);overflow:hidden;background:#000}
+#world{position:absolute;inset:0;transform-origin:49% 50%;will-change:transform}
+#world video,#world .still{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+#world video{opacity:0;z-index:0}
+#world .still{transition:opacity var(--fade,.35s) ease}
+#rays,#dust{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:3}
+#dust{mix-blend-mode:screen}
+.slide{position:absolute;inset:0;pointer-events:none;visibility:hidden;z-index:4}
+.slide.on{visibility:visible}
+.slide.on .interactive{pointer-events:auto}
+.slide .r{opacity:0;filter:blur(8px);transform:translateY(calc(var(--u)*1.2));
+  transition:opacity 1.1s ease,filter 1.1s ease,transform 1.1s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--d,0)*1s)}
+.slide.show .r{opacity:1;filter:none;transform:none}
+.slide.hide .r{transition-delay:0s;transition-duration:.5s}
+.zone{position:absolute;display:flex;flex-direction:column;align-items:center;text-align:center}
+
+.seam{position:absolute;top:22%;height:59%;width:6%;transform:translateX(50%);pointer-events:none;
+  background:radial-gradient(closest-side,rgba(255,214,140,.55),rgba(255,190,100,0) 70%);mix-blend-mode:screen;opacity:0;transition:opacity 1s}
+.on .seam{opacity:1;animation:seam 3.2s ease-in-out infinite}
+@keyframes seam{50%{opacity:.45}}
+
+/* ---------- 0 · doors + seal ---------- */
+.sealpos{position:absolute;width:calc(var(--u)*21);aspect-ratio:1;transform:translate(50%,-50%)}
+.seal{position:relative;width:100%;height:100%;border:0;border-radius:50%;cursor:pointer;
+  background:radial-gradient(circle at 38% 32%,#f7e2b1 0,#d9b06b 28%,#a8743a 62%,#6e4520 100%);
+  box-shadow:0 0 0 calc(var(--u)*.5) rgba(120,78,34,.55),0 calc(var(--u)*1.2) calc(var(--u)*4) rgba(0,0,0,.55),inset 0 0 calc(var(--u)*2) rgba(80,45,15,.6);
+  display:grid;place-items:center}
+.seal::before{content:"";position:absolute;inset:9%;border-radius:50%;border:calc(var(--u)*.35) solid rgba(96,58,24,.55);box-shadow:inset 0 0 0 calc(var(--u)*.4) rgba(255,232,180,.35)}
+.seal svg{width:23%;height:auto;fill:#4b2a12;filter:drop-shadow(0 calc(var(--u)*.2) 0 rgba(255,235,190,.55))}
+@media (prefers-reduced-motion:no-preference){.slide.show .seal{animation:pulse 2.8s ease-in-out infinite 1.5s}}
+@keyframes pulse{50%{box-shadow:0 0 0 calc(var(--u)*.5) rgba(120,78,34,.55),0 0 calc(var(--u)*7) rgba(255,205,120,.75),inset 0 0 calc(var(--u)*2) rgba(80,45,15,.6)}}
+.seal.broken{scale:1.25;opacity:0 !important;filter:blur(6px) !important;transition:scale .7s,opacity .7s,filter .7s}
+.door-text{font-size:calc(var(--u)*4.3);line-height:1.7;color:var(--gold-hi);text-shadow:0 1px 2px rgba(0,0,0,.8),0 0 calc(var(--u)*3) rgba(0,0,0,.6)}
+.door-text b{display:block;font-size:1.25em;font-weight:700;
+  background:linear-gradient(180deg,#fff0c8,#e3b86b 55%,#b5833f);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none;filter:drop-shadow(0 2px 2px rgba(0,0,0,.75))}
+
+/* ---------- 1 · verse ---------- */
+.basmala{font-family:var(--f-quran);font-size:calc(var(--u)*6.6);line-height:1.6;color:#3d220e;white-space:nowrap}
+.ornament{width:calc(var(--u)*30);height:auto;margin:calc(var(--u)*1.5) 0 calc(var(--u)*2.5);color:var(--gold-lo)}
+.verse{font-family:var(--f-quran);font-size:calc(var(--u)*4.7);line-height:2.15;color:var(--ink)}
+.verse .w{display:inline-block;opacity:0;filter:blur(6px);transition:opacity .9s,filter .9s;transition-delay:calc(var(--wd)*1s)}
+.slide.show .verse .w{opacity:1;filter:none}
+.slide.hide .verse .w{transition-delay:0s;transition-duration:.4s}
+.verse .br{color:var(--gold-lo)}
+.ref{margin-top:calc(var(--u)*2.2);font-size:calc(var(--u)*3.6);color:#6b4724}
+
+/* ---------- 2 · families ---------- */
+.fam{font-size:calc(var(--u)*4.4);line-height:1.9;color:var(--ink)}
+.fam .big{display:block;font-size:1.45em;font-weight:700;line-height:1.55;color:#3d220e}
+.fam .amp{display:block;font-size:1.05em;font-weight:700;color:#7a5226}
+.fam hr{border:0;width:calc(var(--u)*12);height:1px;margin:calc(var(--u)*3) auto;background:linear-gradient(90deg,transparent,var(--gold-lo),transparent)}
+.fam .event{display:block;margin-top:calc(var(--u)*1);font-size:1.5em;font-weight:700;color:#3d220e}
+
+/* ---------- 3 · names ---------- */
+.logo{width:calc(var(--u)*17);height:auto;overflow:visible}
+.logo path{fill:#4a2a12;fill-opacity:0;stroke:#9a6a30;stroke-width:1.1;stroke-linejoin:round}
+.slide.show .logo path{animation:draw 3.2s cubic-bezier(.5,.1,.3,1) forwards,fillin 1.4s ease forwards 2.6s}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes fillin{to{fill-opacity:1;stroke-opacity:.35}}
+.names{margin-top:calc(var(--u)*5);white-space:nowrap;font-family:var(--f-names);font-size:calc(var(--u)*8.2);line-height:1.15;color:#3a200c;text-shadow:0 0 calc(var(--u)*3) rgba(255,236,190,.9)}
+.names .and{display:inline-block;font-size:.72em;color:#7a5226;margin:0 calc(var(--u)*2.4);vertical-align:.08em}
+
+/* ---------- arched panels (follow the arch of the scene) ---------- */
+.panel .fill{position:absolute;inset:0;background:linear-gradient(180deg,rgba(46,26,11,.5),rgba(38,21,9,.62))}
+.arch-rim{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.arch-rim path{fill:none;stroke:rgba(243,220,170,.8);stroke-width:1.2;vector-effect:non-scaling-stroke}
+
+.panel{position:absolute;color:var(--cream)}
+.panel-body{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;text-align:center;padding:0 calc(var(--u)*3) calc(var(--u)*5)}
+.panel h2{font-weight:400;font-size:calc(var(--u)*4);color:var(--gold-hi);margin-bottom:calc(var(--u)*1.5)}
+.day{font-size:calc(var(--u)*7.5);font-weight:700;line-height:1.25}
+.time{display:flex;align-items:center;gap:calc(var(--u)*1.6);font-size:calc(var(--u)*4.2);color:var(--gold-hi);margin-top:calc(var(--u)*1.6)}
+.dateline{display:flex;direction:ltr;align-items:center;gap:calc(var(--u)*1.4);margin-top:calc(var(--u)*1)}
+.dateline .sep{font-size:calc(var(--u)*5);color:var(--gold-hi);opacity:.7}
+
+/* ---------- Counter (React Bits, ported) ---------- */
+.counter-container{position:relative;display:inline-block}
+.counter-counter{display:flex;overflow:hidden;line-height:1;direction:ltr}
+.counter-digit{position:relative;width:1ch;font-variant-numeric:tabular-nums}
+.counter-number{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+
+/* ---------- Split-flap (React Bits, ported) ---------- */
+.count{display:flex;direction:rtl;align-items:flex-start;gap:calc(var(--u)*1);margin-top:calc(var(--u)*4)}
+.count .grp{display:flex;flex-direction:column;align-items:center}
+.count .lbl{font-size:calc(var(--u)*2.9);color:var(--gold-hi);margin-top:calc(var(--u)*1.2)}
+.count .colon{font-size:calc(var(--u)*4.6);line-height:1.15;color:rgba(243,220,170,.55)}
+.count.done{display:block;font-size:calc(var(--u)*5);color:var(--gold-hi)}
+.split-flap-text{display:inline-flex;direction:ltr;align-items:center;gap:var(--split-flap-gap,6px);color:var(--split-flap-text-color,#f8fafc);
+  font-family:var(--f-main);font-size:var(--split-flap-font-size,52px);font-weight:700;line-height:1;white-space:pre;user-select:none;font-variant-numeric:tabular-nums}
+.split-flap-text__tile{position:relative;width:.78em;height:1.08em;overflow:hidden;border-radius:var(--split-flap-radius,8px);
+  background:radial-gradient(circle at 50% 0%,rgba(255,255,255,.16),transparent 44%),linear-gradient(180deg,color-mix(in srgb,var(--split-flap-tile-color,#111827) 82%,white),var(--split-flap-tile-color,#111827));
+  box-shadow:0 .035em .08em rgba(255,255,255,.08) inset,0 -.05em .1em rgba(0,0,0,.38) inset,0 .16em .38em rgba(0,0,0,.28);perspective:520px;transform-style:preserve-3d;isolation:isolate}
+.split-flap-text__tile::before{content:"";position:absolute;z-index:8;top:calc(50% - .5px);left:0;width:100%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.18) 18%,rgba(0,0,0,.64) 50%,rgba(255,255,255,.14) 82%,transparent);box-shadow:0 -1px 0 rgba(255,255,255,.08),0 1px 0 rgba(0,0,0,.5);pointer-events:none}
+.split-flap-text__tile::after{content:"";position:absolute;inset:0;z-index:9;border:1px solid rgba(255,255,255,.08);border-radius:inherit;box-shadow:0 0 0 1px rgba(0,0,0,.2) inset;pointer-events:none}
+.split-flap-text__half,.split-flap-text__flap{position:absolute;left:0;width:100%;height:50%;overflow:hidden;background:linear-gradient(180deg,rgba(255,255,255,.07),transparent 34%),var(--split-flap-tile-color,#111827);backface-visibility:hidden}
+.split-flap-text__half--top,.split-flap-text__flap--front{top:0}
+.split-flap-text__half--bottom,.split-flap-text__flap--back{bottom:0;background:linear-gradient(0deg,rgba(255,255,255,.06),transparent 38%),color-mix(in srgb,var(--split-flap-tile-color,#111827) 92%,black)}
+.split-flap-text__char{position:absolute;left:0;width:100%;height:200%;display:flex;align-items:center;justify-content:center;color:var(--split-flap-text-color,#f8fafc);text-shadow:0 .025em 0 rgba(255,255,255,.16),0 .09em .16em rgba(0,0,0,.42)}
+.split-flap-text__half--top .split-flap-text__char,.split-flap-text__flap--front .split-flap-text__char{top:0}
+.split-flap-text__half--bottom .split-flap-text__char,.split-flap-text__flap--back .split-flap-text__char{bottom:0}
+.split-flap-text__flap{z-index:6;will-change:transform,filter;transform-style:preserve-3d}
+.split-flap-text__flap--front{transform-origin:center bottom;animation:split-flap-front var(--split-flap-flip-duration,.12s) cubic-bezier(.23,1,.32,1) both}
+.split-flap-text__flap--back{transform-origin:center top;transform:rotateX(90deg);animation:split-flap-back var(--split-flap-flip-duration,.12s) cubic-bezier(.23,1,.32,1) both}
+@keyframes split-flap-front{0%{transform:rotateX(0);filter:brightness(1.08)}100%{transform:rotateX(-90deg);filter:brightness(.52)}}
+@keyframes split-flap-back{0%,45%{transform:rotateX(90deg);filter:brightness(.58)}100%{transform:rotateX(0);filter:brightness(1)}}
+@media (prefers-reduced-motion:reduce){.split-flap-text__flap{animation:none !important}}
+
+/* ---------- 5 · gathering ---------- */
+.gather{font-size:calc(var(--u)*5.6);font-weight:700;line-height:1.6}
+.gather small{display:block;font-weight:400;font-size:.62em;color:var(--gold-hi);margin-top:calc(var(--u)*1.2)}
+.gbtn{margin-top:calc(var(--u)*5)}
+
+/* gold buttons */
+.gbtn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;white-space:nowrap;padding:calc(var(--u)*2.6) calc(var(--u)*5);border-radius:999px;border:0;cursor:pointer;
+  font:700 calc(var(--u)*3.9) var(--f-main);color:#2c180a;text-decoration:none;
+  background:linear-gradient(180deg,#f6dfa8,#d7aa5f 55%,#b5823f);box-shadow:0 calc(var(--u)*1) calc(var(--u)*3) rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.6)}
+.gbtn svg{width:1.2em;height:1.2em}
+.gbtn:active{transform:translateY(1px)}
+.gbtn.small{font-size:calc(var(--u)*3.4);padding:calc(var(--u)*2) calc(var(--u)*5)}
+
+/* ---------- 6 · closing ---------- */
+.replaywrap{margin-top:calc(var(--u)*5)}
+
+/* ---------- chrome (fixed to the viewport) ---------- */
+.nav{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 18px);transform:translateX(-50%);z-index:5;transition:opacity .6s,translate .6s}
+.nav.away{opacity:0;pointer-events:none;translate:0 20px}
+.gnav{display:flex;align-items:center;gap:14px;padding:8px 10px;border-radius:999px;direction:rtl;background:rgba(36,21,11,.55);border:1px solid rgba(243,220,170,.35)}
+.nav button{width:44px;height:44px;border-radius:50%;border:0;background:transparent;color:var(--gold-hi);display:grid;place-items:center;cursor:pointer}
+.nav button:disabled{opacity:.3;cursor:default}
+.nav svg{width:22px;height:22px}
+.dots{display:flex;gap:7px}
+.dots i{width:6px;height:6px;border-radius:50%;background:rgba(243,220,170,.35);transition:background .4s,transform .4s}
+.dots i.cur{background:var(--gold-hi);transform:scale(1.35)}
+.sound{position:fixed;top:calc(env(safe-area-inset-top,0px) + 14px);left:14px;z-index:5;transition:opacity .6s}
+.sound.away{opacity:0;pointer-events:none}
+.gsound{border-radius:50%;background:rgba(36,21,11,.55);border:1px solid rgba(243,220,170,.35)}
+.sound button{width:100%;height:100%;border:0;background:none;color:var(--gold-hi);display:grid;place-items:center;cursor:pointer}
+.sound svg{width:20px;height:20px}
+.sound .off{display:none}.sound.muted .on{display:none}.sound.muted .off{display:block}
+.seal:focus-visible,.gbtn:focus-visible,.nav button:focus-visible,.sound button:focus-visible{outline:2px solid var(--gold-hi);outline-offset:4px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+</style>
+</head>
+<body>
+<div id="backdrop"></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <clipPath id="archDate" clipPathUnits="objectBoundingBox"><path d="M0.4908,0.0000 L0.4542,0.0103 L0.4286,0.0205 L0.4048,0.0308 L0.3846,0.0410 L0.3626,0.0513 L0.3425,0.0615 L0.3223,0.0718 L0.3040,0.0821 L0.2875,0.0923 L0.2711,0.1026 L0.2546,0.1128 L0.2399,0.1231 L0.2253,0.1333 L0.2125,0.1436 L0.1996,0.1538 L0.1868,0.1641 L0.1740,0.1744 L0.1630,0.1846 L0.1520,0.1949 L0.1410,0.2051 L0.1300,0.2154 L0.1209,0.2256 L0.1117,0.2359 L0.1044,0.2462 L0.0952,0.2564 L0.0861,0.2667 L0.0788,0.2769 L0.0733,0.2872 L0.0659,0.2974 L0.0604,0.3077 L0.0531,0.3179 L0.0476,0.3282 L0.0421,0.3385 L0.0385,0.3487 L0.0330,0.3590 L0.0293,0.3692 L0.0238,0.3795 L0.0201,0.3897 L0.0183,0.4000 L0.0147,0.4103 L0.0110,0.4205 L0.0092,0.4308 L0.0055,0.4410 L0.0037,0.4513 L0.0018,0.4615 L0.0000,0.4718 L0.0000,0.4821 L0.0000,0.4923 L0.0000,0.5026 L0.0000,0.5128 L0.0000,0.5231 L0.0000,0.5333 L0.0000,0.5436 L0.0000,0.5538 L0.0000,0.5641 L0.0000,0.5744 L0.0000,0.5846 L0.0000,0.5949 L0.0000,0.6051 L0.0000,0.6154 L0.0000,0.6256 L0.0000,0.6359 L0.0000,0.6462 L0.0000,0.6564 L0.0000,0.6667 L0.0000,0.6769 L0.0000,0.6872 L0.0000,0.6974 L0.0000,0.7077 L0.0000,0.7179 L0.0000,0.7282 L0.0000,0.7385 L0.0000,0.7487 L0.0000,0.7590 L0.0000,0.7692 L0.0000,0.7795 L0.0000,0.7897 L0.0000,0.8000 L0.0000,0.8103 L0.0000,0.8205 L0.0000,0.8308 L0.0000,0.8410 L0.0000,0.8513 L0.0000,0.8615 L0.0000,0.8718 L0.0000,0.8821 L0.0000,0.8923 L0.0000,0.9026 L0.0000,0.9128 L0.0000,0.9231 L0.0000,0.9333 L0.0000,0.9436 L0.0000,0.9538 L0.0000,0.9641 L0.0000,0.9744 L0.0000,0.9846 L0.0000,0.9949 L0.0000,1.0000 L1.0000,1.0000 L1.0000,0.9949 L1.0000,0.9846 L1.0000,0.9744 L1.0000,0.9641 L1.0000,0.9538 L1.0000,0.9436 L1.0000,0.9333 L1.0000,0.9231 L1.0000,0.9128 L1.0000,0.9026 L1.0000,0.8923 L1.0000,0.8821 L1.0000,0.8718 L1.0000,0.8615 L1.0000,0.8513 L1.0000,0.8410 L1.0000,0.8308 L1.0000,0.8205 L1.0000,0.8103 L1.0000,0.8000 L1.0000,0.7897 L1.0000,0.7795 L1.0000,0.7692 L1.0000,0.7590 L1.0000,0.7487 L1.0000,0.7385 L1.0000,0.7282 L1.0000,0.7179 L1.0000,0.7077 L1.0000,0.6974 L1.0000,0.6872 L1.0000,0.6769 L1.0000,0.6667 L1.0000,0.6564 L1.0000,0.6462 L1.0000,0.6359 L1.0000,0.6256 L1.0000,0.6154 L1.0000,0.6051 L1.0000,0.5949 L1.0000,0.5846 L1.0000,0.5744 L1.0000,0.5641 L1.0000,0.5538 L1.0000,0.5436 L1.0000,0.5333 L1.0000,0.5231 L1.0000,0.5128 L1.0000,0.5026 L1.0000,0.4923 L0.9982,0.4821 L0.9963,0.4718 L0.9945,0.4615 L0.9927,0.4513 L0.9908,0.4410 L0.9890,0.4308 L0.9853,0.4205 L0.9835,0.4103 L0.9799,0.4000 L0.9762,0.3897 L0.9725,0.3795 L0.9689,0.3692 L0.9652,0.3590 L0.9597,0.3487 L0.9542,0.3385 L0.9487,0.3282 L0.9432,0.3179 L0.9377,0.3077 L0.9304,0.2974 L0.9249,0.2872 L0.9176,0.2769 L0.9103,0.2667 L0.9011,0.2564 L0.8938,0.2462 L0.8846,0.2359 L0.8755,0.2256 L0.8663,0.2154 L0.8571,0.2051 L0.8462,0.1949 L0.8352,0.1846 L0.8242,0.1744 L0.8114,0.1641 L0.7985,0.1538 L0.7875,0.1436 L0.7729,0.1333 L0.7582,0.1231 L0.7436,0.1128 L0.7271,0.1026 L0.7106,0.0923 L0.6941,0.0821 L0.6758,0.0718 L0.6557,0.0615 L0.6355,0.0513 L0.6136,0.0410 L0.5934,0.0308 L0.5696,0.0205 L0.5440,0.0103 L0.5073,0.0000 Z"/></clipPath>
+    <clipPath id="archGather" clipPathUnits="objectBoundingBox"><path d="M0.4908,0.0000 L0.4542,0.0110 L0.4286,0.0221 L0.4048,0.0331 L0.3846,0.0441 L0.3626,0.0552 L0.3425,0.0662 L0.3223,0.0772 L0.3040,0.0883 L0.2875,0.0993 L0.2711,0.1103 L0.2546,0.1214 L0.2399,0.1324 L0.2253,0.1434 L0.2125,0.1545 L0.1996,0.1655 L0.1868,0.1766 L0.1740,0.1876 L0.1630,0.1986 L0.1520,0.2097 L0.1410,0.2207 L0.1300,0.2317 L0.1209,0.2428 L0.1117,0.2538 L0.1044,0.2648 L0.0952,0.2759 L0.0861,0.2869 L0.0788,0.2979 L0.0733,0.3090 L0.0659,0.3200 L0.0604,0.3310 L0.0531,0.3421 L0.0476,0.3531 L0.0421,0.3641 L0.0385,0.3752 L0.0330,0.3862 L0.0293,0.3972 L0.0238,0.4083 L0.0201,0.4193 L0.0183,0.4303 L0.0147,0.4414 L0.0110,0.4524 L0.0092,0.4634 L0.0055,0.4745 L0.0037,0.4855 L0.0018,0.4966 L0.0000,0.5076 L0.0000,0.5186 L0.0000,0.5297 L0.0000,0.5407 L0.0000,0.5517 L0.0000,0.5628 L0.0000,0.5738 L0.0000,0.5848 L0.0000,0.5959 L0.0000,0.6069 L0.0000,0.6179 L0.0000,0.6290 L0.0000,0.6400 L0.0000,0.6510 L0.0000,0.6621 L0.0000,0.6731 L0.0000,0.6841 L0.0000,0.6952 L0.0000,0.7062 L0.0000,0.7172 L0.0000,0.7283 L0.0000,0.7393 L0.0000,0.7503 L0.0000,0.7614 L0.0000,0.7724 L0.0000,0.7834 L0.0000,0.7945 L0.0000,0.8055 L0.0000,0.8166 L0.0000,0.8276 L0.0000,0.8386 L0.0000,0.8497 L0.0000,0.8607 L0.0000,0.8717 L0.0000,0.8828 L0.0000,0.8938 L0.0000,0.9048 L0.0000,0.9159 L0.0000,0.9269 L0.0000,0.9379 L0.0000,0.9490 L0.0000,0.9600 L0.0000,0.9710 L0.0000,0.9821 L0.0000,0.9931 L0.0000,1.0000 L1.0000,1.0000 L1.0000,0.9931 L1.0000,0.9821 L1.0000,0.9710 L1.0000,0.9600 L1.0000,0.9490 L1.0000,0.9379 L1.0000,0.9269 L1.0000,0.9159 L1.0000,0.9048 L1.0000,0.8938 L1.0000,0.8828 L1.0000,0.8717 L1.0000,0.8607 L1.0000,0.8497 L1.0000,0.8386 L1.0000,0.8276 L1.0000,0.8166 L1.0000,0.8055 L1.0000,0.7945 L1.0000,0.7834 L1.0000,0.7724 L1.0000,0.7614 L1.0000,0.7503 L1.0000,0.7393 L1.0000,0.7283 L1.0000,0.7172 L1.0000,0.7062 L1.0000,0.6952 L1.0000,0.6841 L1.0000,0.6731 L1.0000,0.6621 L1.0000,0.6510 L1.0000,0.6400 L1.0000,0.6290 L1.0000,0.6179 L1.0000,0.6069 L1.0000,0.5959 L1.0000,0.5848 L1.0000,0.5738 L1.0000,0.5628 L1.0000,0.5517 L1.0000,0.5407 L1.0000,0.5297 L0.9982,0.5186 L0.9963,0.5076 L0.9945,0.4966 L0.9927,0.4855 L0.9908,0.4745 L0.9890,0.4634 L0.9853,0.4524 L0.9835,0.4414 L0.9799,0.4303 L0.9762,0.4193 L0.9725,0.4083 L0.9689,0.3972 L0.9652,0.3862 L0.9597,0.3752 L0.9542,0.3641 L0.9487,0.3531 L0.9432,0.3421 L0.9377,0.3310 L0.9304,0.3200 L0.9249,0.3090 L0.9176,0.2979 L0.9103,0.2869 L0.9011,0.2759 L0.8938,0.2648 L0.8846,0.2538 L0.8755,0.2428 L0.8663,0.2317 L0.8571,0.2207 L0.8462,0.2097 L0.8352,0.1986 L0.8242,0.1876 L0.8114,0.1766 L0.7985,0.1655 L0.7875,0.1545 L0.7729,0.1434 L0.7582,0.1324 L0.7436,0.1214 L0.7271,0.1103 L0.7106,0.0993 L0.6941,0.0883 L0.6758,0.0772 L0.6557,0.0662 L0.6355,0.0552 L0.6136,0.0441 L0.5934,0.0331 L0.5696,0.0221 L0.5440,0.0110 L0.5073,0.0000 Z"/></clipPath>
+    <symbol id="logoSym" viewBox="834.2 317.2 209.3 538.0"><path d="M 874.03125 517.578125 C 884.742188 531.050781 895.992188 544.101562 905.300781 558.628906 C 915.320312 574.289062 923.320312 590.898438 927.5625 609.128906 C 929.132812 615.851562 929.910156 622.679688 930.042969 629.578125 C 930.203125 643.578125 925.582031 656.148438 918.371094 667.949219 C 917.890625 668.730469 917.460938 669.53125 917.023438 670.328125 C 916.152344 671.929688 915.441406 671.769531 914.3125 670.320312 C 907.230469 661.230469 900.082031 652.191406 892.933594 643.148438 C 883.472656 631.199219 874.210938 619.121094 866.792969 605.761719 C 866.773438 605.71875 866.75 605.691406 866.730469 605.648438 C 861.652344 596.488281 858.550781 586.339844 857.59375 575.898438 C 856.140625 560.109375 857.84375 537.238281 874.03125 517.578125 M 1038.140625 322.730469 C 1036.761719 321.21875 1035.023438 321.480469 1033.273438 321.921875 C 1028.492188 323.128906 1023.710938 324.328125 1018.933594 325.519531 C 1011.542969 327.371094 1004.101562 329.109375 996.460938 329.238281 C 986.222656 329.421875 976.28125 327.398438 966.472656 324.660156 C 963.363281 323.78125 962.5625 323.960938 961.210938 326.871094 C 958.660156 332.398438 956.222656 337.980469 953.78125 343.558594 C 953.203125 344.878906 952.5625 346.328125 952.960938 347.761719 C 953.460938 349.578125 952.660156 350 951.121094 350.308594 C 943 351.910156 935.042969 354.121094 927.203125 356.75 C 909.222656 362.789062 892.960938 371.769531 879.191406 384.929688 C 864.511719 398.96875 854.382812 415.839844 848.613281 435.300781 C 844.460938 449.261719 844.722656 463.160156 849.371094 477.011719 C 852.402344 486.039062 856.960938 494.238281 862.320312 502.039062 C 862.84375 502.800781 863.03125 503.410156 862.910156 504.050781 C 854.832031 513.910156 848.023438 525.449219 843.59375 538.929688 C 840.140625 548.289062 838.183594 558 838.261719 568.171875 C 838.351562 580.320312 841 592.039062 844.75 603.539062 C 852.183594 626.320312 865.230469 645.839844 880.121094 664.289062 C 887.09375 672.921875 894.050781 681.558594 901.042969 690.171875 C 901.890625 691.21875 902.023438 692.011719 901.121094 693.199219 C 894.011719 702.648438 886.472656 711.738281 878.363281 720.351562 C 877.960938 720.769531 877.292969 721.101562 877.441406 721.878906 C 878.042969 721.941406 878.351562 721.601562 878.671875 721.308594 C 887.132812 713.601562 895.601562 705.878906 903.261719 697.328125 C 905.023438 695.371094 905.03125 695.308594 906.53125 697.339844 C 915.453125 709.371094 923.5 721.898438 929.410156 735.730469 C 934.191406 746.921875 935.761719 758.460938 933.640625 770.410156 C 929.511719 793.648438 921.320312 815.390625 909.210938 835.640625 C 906.160156 840.738281 903.03125 845.78125 899.691406 851.25 C 900.292969 850.988281 900.453125 850.960938 900.542969 850.871094 C 900.933594 850.441406 901.320312 850.011719 901.660156 849.539062 C 911.261719 836.648438 919.671875 823.050781 926.230469 808.339844 C 934 790.921875 939.511719 772.78125 943.78125 754.21875 C 947.050781 740.03125 946.132812 726.308594 940.320312 712.929688 C 935.121094 700.96875 928.320312 689.941406 920.84375 679.300781 C 918.460938 675.910156 918.730469 676.730469 920.800781 673.730469 C 927.183594 664.480469 932 654.441406 936 643.96875 C 944.550781 621.550781 945.3125 599.03125 936.960938 576.371094 C 930.371094 558.480469 921.113281 542.039062 910.070312 526.558594 C 904.09375 518.179688 897.621094 510.171875 891.132812 502.179688 C 896.050781 498.839844 901.632812 495.730469 907.992188 492.929688 C 908.191406 492.839844 908.390625 492.75 908.601562 492.660156 C 918.980469 488.160156 929.363281 483.660156 939.75 479.171875 C 952.28125 473.761719 965.273438 469.601562 978.140625 465.089844 C 986.183594 462.269531 993.433594 458.070312 999.5 452.039062 C 1010.710938 440.921875 1014.59375 426.410156 1017.910156 411.671875 C 1018.011719 411.21875 1018.03125 410.828125 1017.953125 410.550781 L 1017.941406 410.558594 C 982.523438 445.121094 952.347656 450.800781 950.757812 451.03125 L 950.730469 451.03125 C 947.910156 452.039062 948.011719 452.171875 945.410156 452.960938 C 944.332031 453.28125 943.25 453.589844 942.152344 453.871094 C 935.910156 455.480469 907.191406 463.828125 879.292969 487.5 C 875.710938 482.738281 872.3125 477.871094 869.363281 472.679688 C 863.761719 462.871094 859.03125 452.730469 857.292969 441.421875 C 856.050781 433.351562 857.410156 425.929688 861.910156 418.988281 C 866.683594 411.640625 872.792969 405.621094 879.671875 400.359375 C 894.203125 389.238281 910.8125 382.550781 928.292969 377.78125 C 949.25 372.058594 970.691406 368.808594 992.121094 365.53125 C 1000.230469 364.289062 1008.3125 363.019531 1015.992188 359.941406 C 1021.410156 357.761719 1025.53125 354.148438 1028.332031 349.109375 C 1032.183594 342.199219 1035.34375 334.949219 1038.390625 327.648438 C 1039.070312 326.03125 1039.53125 324.269531 1038.140625 322.730469"/>
+<path d="M 965.613281 517.578125 L 981.90625 501.28125 L 998.199219 517.578125 L 981.90625 533.875 Z M 965.613281 517.578125"/>
+<path d="M 938.71875 517.582031 L 955.007812 501.28125 L 971.300781 517.582031 L 955.011719 533.878906 Z M 938.71875 517.582031"/></symbol>
+  </defs>
+</svg>
+
+<main id="stage" aria-live="polite">
+  <div id="world">
+    <video id="vid" muted playsinline preload="auto" disablepictureinpicture></video>
+    <img class="still" id="stillA" src="media/t1-start.jpg" alt="" style="z-index:2">
+    <img class="still" id="stillB" alt="" style="opacity:0;z-index:1">
+    <canvas id="rays"></canvas>
+    <canvas id="dust"></canvas>
+
+    <!-- 0 · closed doors -->
+    <section class="slide" data-i="0">
+      <h1 class="sr">دعوة حفل عقد قران يوسف و مينا</h1>
+      <div class="seam" style="right:calc(100% - 48.6%)"></div>
+      <div class="sealpos" style="right:calc(100% - 48.6%);top:45%">
+        <button class="seal interactive r" style="--d:.3" aria-label="افتح الدعوة"><svg viewBox="0 0 209.3 538.0"><use href="#logoSym" width="100%" height="100%"/></svg></button>
+      </div>
+      <div class="zone r door-text" style="right:calc(100% - 48.6% - 15%);width:30%;top:64%;--d:.9"><span>اضغط على الختم<br>لفتح الدعوة</span></div>
+    </section>
+
+    <!-- 1 · verse -->
+    <section class="slide" data-i="1">
+      <div class="zone" style="right:calc(100% - 48.5% - 26%);width:52%;top:25.5%">
+        <div class="basmala r" style="--d:.2">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+        <svg class="ornament r" style="--d:.8" viewBox="0 0 300 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.2"><path d="M0 12H118M182 12H300"/><path d="M150 3l9 9-9 9-9-9z"/><path d="M128 12c6-6 10-6 13 0-3 6-7 6-13 0zM172 12c-6-6-10-6-13 0 3 6 7 6 13 0z"/></g><circle cx="150" cy="12" r="2" fill="currentColor"/></svg>
+        <p class="verse" id="verse"></p>
+        <p class="ref r" style="--d:6.2">( سورة الروم : ٢١ )</p>
+      </div>
+    </section>
+
+    <!-- 2 · families -->
+    <section class="slide" data-i="2">
+      <div class="zone fam" style="right:calc(100% - 48.5% - 26%);width:52%;top:27%">
+        <span class="r" style="--d:.2">تتشرف</span>
+        <span class="big r" style="--d:.7">عائلة آل معارج</span>
+        <span class="amp r" style="--d:1.1">و</span>
+        <span class="big r" style="--d:1.5">عائلة آل الخزعلي</span>
+        <hr class="r" style="--d:2.1">
+        <span class="r" style="--d:2.5">بدعوتكم لحضور</span>
+        <span class="event r" style="--d:3">حفل عقد قِران</span>
+      </div>
+    </section>
+
+    <!-- 3 · logo + names -->
+    <section class="slide" data-i="3">
+      <div class="zone" style="right:calc(100% - 48.2% - 18%);width:36%;top:26%">
+        <svg class="logo" id="logoDraw" viewBox="834.2 317.2 209.3 538.0" role="img" aria-label="شعار يوسف و مينا"><path d="M 874.03125 517.578125 C 884.742188 531.050781 895.992188 544.101562 905.300781 558.628906 C 915.320312 574.289062 923.320312 590.898438 927.5625 609.128906 C 929.132812 615.851562 929.910156 622.679688 930.042969 629.578125 C 930.203125 643.578125 925.582031 656.148438 918.371094 667.949219 C 917.890625 668.730469 917.460938 669.53125 917.023438 670.328125 C 916.152344 671.929688 915.441406 671.769531 914.3125 670.320312 C 907.230469 661.230469 900.082031 652.191406 892.933594 643.148438 C 883.472656 631.199219 874.210938 619.121094 866.792969 605.761719 C 866.773438 605.71875 866.75 605.691406 866.730469 605.648438 C 861.652344 596.488281 858.550781 586.339844 857.59375 575.898438 C 856.140625 560.109375 857.84375 537.238281 874.03125 517.578125 M 1038.140625 322.730469 C 1036.761719 321.21875 1035.023438 321.480469 1033.273438 321.921875 C 1028.492188 323.128906 1023.710938 324.328125 1018.933594 325.519531 C 1011.542969 327.371094 1004.101562 329.109375 996.460938 329.238281 C 986.222656 329.421875 976.28125 327.398438 966.472656 324.660156 C 963.363281 323.78125 962.5625 323.960938 961.210938 326.871094 C 958.660156 332.398438 956.222656 337.980469 953.78125 343.558594 C 953.203125 344.878906 952.5625 346.328125 952.960938 347.761719 C 953.460938 349.578125 952.660156 350 951.121094 350.308594 C 943 351.910156 935.042969 354.121094 927.203125 356.75 C 909.222656 362.789062 892.960938 371.769531 879.191406 384.929688 C 864.511719 398.96875 854.382812 415.839844 848.613281 435.300781 C 844.460938 449.261719 844.722656 463.160156 849.371094 477.011719 C 852.402344 486.039062 856.960938 494.238281 862.320312 502.039062 C 862.84375 502.800781 863.03125 503.410156 862.910156 504.050781 C 854.832031 513.910156 848.023438 525.449219 843.59375 538.929688 C 840.140625 548.289062 838.183594 558 838.261719 568.171875 C 838.351562 580.320312 841 592.039062 844.75 603.539062 C 852.183594 626.320312 865.230469 645.839844 880.121094 664.289062 C 887.09375 672.921875 894.050781 681.558594 901.042969 690.171875 C 901.890625 691.21875 902.023438 692.011719 901.121094 693.199219 C 894.011719 702.648438 886.472656 711.738281 878.363281 720.351562 C 877.960938 720.769531 877.292969 721.101562 877.441406 721.878906 C 878.042969 721.941406 878.351562 721.601562 878.671875 721.308594 C 887.132812 713.601562 895.601562 705.878906 903.261719 697.328125 C 905.023438 695.371094 905.03125 695.308594 906.53125 697.339844 C 915.453125 709.371094 923.5 721.898438 929.410156 735.730469 C 934.191406 746.921875 935.761719 758.460938 933.640625 770.410156 C 929.511719 793.648438 921.320312 815.390625 909.210938 835.640625 C 906.160156 840.738281 903.03125 845.78125 899.691406 851.25 C 900.292969 850.988281 900.453125 850.960938 900.542969 850.871094 C 900.933594 850.441406 901.320312 850.011719 901.660156 849.539062 C 911.261719 836.648438 919.671875 823.050781 926.230469 808.339844 C 934 790.921875 939.511719 772.78125 943.78125 754.21875 C 947.050781 740.03125 946.132812 726.308594 940.320312 712.929688 C 935.121094 700.96875 928.320312 689.941406 920.84375 679.300781 C 918.460938 675.910156 918.730469 676.730469 920.800781 673.730469 C 927.183594 664.480469 932 654.441406 936 643.96875 C 944.550781 621.550781 945.3125 599.03125 936.960938 576.371094 C 930.371094 558.480469 921.113281 542.039062 910.070312 526.558594 C 904.09375 518.179688 897.621094 510.171875 891.132812 502.179688 C 896.050781 498.839844 901.632812 495.730469 907.992188 492.929688 C 908.191406 492.839844 908.390625 492.75 908.601562 492.660156 C 918.980469 488.160156 929.363281 483.660156 939.75 479.171875 C 952.28125 473.761719 965.273438 469.601562 978.140625 465.089844 C 986.183594 462.269531 993.433594 458.070312 999.5 452.039062 C 1010.710938 440.921875 1014.59375 426.410156 1017.910156 411.671875 C 1018.011719 411.21875 1018.03125 410.828125 1017.953125 410.550781 L 1017.941406 410.558594 C 982.523438 445.121094 952.347656 450.800781 950.757812 451.03125 L 950.730469 451.03125 C 947.910156 452.039062 948.011719 452.171875 945.410156 452.960938 C 944.332031 453.28125 943.25 453.589844 942.152344 453.871094 C 935.910156 455.480469 907.191406 463.828125 879.292969 487.5 C 875.710938 482.738281 872.3125 477.871094 869.363281 472.679688 C 863.761719 462.871094 859.03125 452.730469 857.292969 441.421875 C 856.050781 433.351562 857.410156 425.929688 861.910156 418.988281 C 866.683594 411.640625 872.792969 405.621094 879.671875 400.359375 C 894.203125 389.238281 910.8125 382.550781 928.292969 377.78125 C 949.25 372.058594 970.691406 368.808594 992.121094 365.53125 C 1000.230469 364.289062 1008.3125 363.019531 1015.992188 359.941406 C 1021.410156 357.761719 1025.53125 354.148438 1028.332031 349.109375 C 1032.183594 342.199219 1035.34375 334.949219 1038.390625 327.648438 C 1039.070312 326.03125 1039.53125 324.269531 1038.140625 322.730469"/>
+<path d="M 965.613281 517.578125 L 981.90625 501.28125 L 998.199219 517.578125 L 981.90625 533.875 Z M 965.613281 517.578125"/>
+<path d="M 938.71875 517.582031 L 955.007812 501.28125 L 971.300781 517.582031 L 955.011719 533.878906 Z M 938.71875 517.582031"/></svg>
+        <div class="names r" style="--d:3.4">يوسف<span class="and">و</span>مينا</div>
+      </div>
+    </section>
+
+    <!-- 4 · date + countdown (panel follows the arch of the scene) -->
+    <section class="slide" data-i="4">
+      <div class="panel r" style="left:23.52%;top:23.91%;width:50.56%;height:40.62%;--d:.2">
+        <div class="fill" style="clip-path:url(#archDate);-webkit-clip-path:url(#archDate)"></div><svg class="arch-rim" viewBox="0 0 1 1" preserveAspectRatio="none" aria-hidden="true"><path d="M0.4908,0.0000 L0.4542,0.0103 L0.4286,0.0205 L0.4048,0.0308 L0.3846,0.0410 L0.3626,0.0513 L0.3425,0.0615 L0.3223,0.0718 L0.3040,0.0821 L0.2875,0.0923 L0.2711,0.1026 L0.2546,0.1128 L0.2399,0.1231 L0.2253,0.1333 L0.2125,0.1436 L0.1996,0.1538 L0.1868,0.1641 L0.1740,0.1744 L0.1630,0.1846 L0.1520,0.1949 L0.1410,0.2051 L0.1300,0.2154 L0.1209,0.2256 L0.1117,0.2359 L0.1044,0.2462 L0.0952,0.2564 L0.0861,0.2667 L0.0788,0.2769 L0.0733,0.2872 L0.0659,0.2974 L0.0604,0.3077 L0.0531,0.3179 L0.0476,0.3282 L0.0421,0.3385 L0.0385,0.3487 L0.0330,0.3590 L0.0293,0.3692 L0.0238,0.3795 L0.0201,0.3897 L0.0183,0.4000 L0.0147,0.4103 L0.0110,0.4205 L0.0092,0.4308 L0.0055,0.4410 L0.0037,0.4513 L0.0018,0.4615 L0.0000,0.4718 L0.0000,0.4821 L0.0000,0.4923 L0.0000,0.5026 L0.0000,0.5128 L0.0000,0.5231 L0.0000,0.5333 L0.0000,0.5436 L0.0000,0.5538 L0.0000,0.5641 L0.0000,0.5744 L0.0000,0.5846 L0.0000,0.5949 L0.0000,0.6051 L0.0000,0.6154 L0.0000,0.6256 L0.0000,0.6359 L0.0000,0.6462 L0.0000,0.6564 L0.0000,0.6667 L0.0000,0.6769 L0.0000,0.6872 L0.0000,0.6974 L0.0000,0.7077 L0.0000,0.7179 L0.0000,0.7282 L0.0000,0.7385 L0.0000,0.7487 L0.0000,0.7590 L0.0000,0.7692 L0.0000,0.7795 L0.0000,0.7897 L0.0000,0.8000 L0.0000,0.8103 L0.0000,0.8205 L0.0000,0.8308 L0.0000,0.8410 L0.0000,0.8513 L0.0000,0.8615 L0.0000,0.8718 L0.0000,0.8821 L0.0000,0.8923 L0.0000,0.9026 L0.0000,0.9128 L0.0000,0.9231 L0.0000,0.9333 L0.0000,0.9436 L0.0000,0.9538 L0.0000,0.9641 L0.0000,0.9744 L0.0000,0.9846 L0.0000,0.9949 L0.0000,1.0000 L1.0000,1.0000 L1.0000,0.9949 L1.0000,0.9846 L1.0000,0.9744 L1.0000,0.9641 L1.0000,0.9538 L1.0000,0.9436 L1.0000,0.9333 L1.0000,0.9231 L1.0000,0.9128 L1.0000,0.9026 L1.0000,0.8923 L1.0000,0.8821 L1.0000,0.8718 L1.0000,0.8615 L1.0000,0.8513 L1.0000,0.8410 L1.0000,0.8308 L1.0000,0.8205 L1.0000,0.8103 L1.0000,0.8000 L1.0000,0.7897 L1.0000,0.7795 L1.0000,0.7692 L1.0000,0.7590 L1.0000,0.7487 L1.0000,0.7385 L1.0000,0.7282 L1.0000,0.7179 L1.0000,0.7077 L1.0000,0.6974 L1.0000,0.6872 L1.0000,0.6769 L1.0000,0.6667 L1.0000,0.6564 L1.0000,0.6462 L1.0000,0.6359 L1.0000,0.6256 L1.0000,0.6154 L1.0000,0.6051 L1.0000,0.5949 L1.0000,0.5846 L1.0000,0.5744 L1.0000,0.5641 L1.0000,0.5538 L1.0000,0.5436 L1.0000,0.5333 L1.0000,0.5231 L1.0000,0.5128 L1.0000,0.5026 L1.0000,0.4923 L0.9982,0.4821 L0.9963,0.4718 L0.9945,0.4615 L0.9927,0.4513 L0.9908,0.4410 L0.9890,0.4308 L0.9853,0.4205 L0.9835,0.4103 L0.9799,0.4000 L0.9762,0.3897 L0.9725,0.3795 L0.9689,0.3692 L0.9652,0.3590 L0.9597,0.3487 L0.9542,0.3385 L0.9487,0.3282 L0.9432,0.3179 L0.9377,0.3077 L0.9304,0.2974 L0.9249,0.2872 L0.9176,0.2769 L0.9103,0.2667 L0.9011,0.2564 L0.8938,0.2462 L0.8846,0.2359 L0.8755,0.2256 L0.8663,0.2154 L0.8571,0.2051 L0.8462,0.1949 L0.8352,0.1846 L0.8242,0.1744 L0.8114,0.1641 L0.7985,0.1538 L0.7875,0.1436 L0.7729,0.1333 L0.7582,0.1231 L0.7436,0.1128 L0.7271,0.1026 L0.7106,0.0923 L0.6941,0.0821 L0.6758,0.0718 L0.6557,0.0615 L0.6355,0.0513 L0.6136,0.0410 L0.5934,0.0308 L0.5696,0.0205 L0.5440,0.0103 L0.5073,0.0000 Z"/></svg>
+        <div class="panel-body">
+          <h2>موعد الحفل</h2>
+          <div class="day">السبت</div>
+          <div class="dateline" aria-label="٧ تشرين الثاني ٢٠٢٦">
+            <span class="ctr" data-v="7" data-places="10,1"></span><span class="sep">/</span>
+            <span class="ctr" data-v="11" data-places="10,1"></span><span class="sep">/</span>
+            <span class="ctr" data-v="2026" data-places="1000,100,10,1"></span>
+          </div>
+          <div class="time"><span>الساعة</span><span class="dateline" style="margin:0"><span class="ctr sm" data-v="5" data-places="10,1"></span><span class="sep">:</span><span class="ctr sm" data-v="0" data-places="10,1"></span></span><span>مساءً</span></div>
+          <div class="count" id="count" aria-label="الوقت المتبقي على الحفل">
+            <div class="grp"><div class="flap" id="fd"></div><span class="lbl">يوم</span></div><span class="colon">:</span>
+            <div class="grp"><div class="flap" id="fh"></div><span class="lbl">ساعة</span></div><span class="colon">:</span>
+            <div class="grp"><div class="flap" id="fm"></div><span class="lbl">دقيقة</span></div><span class="colon">:</span>
+            <div class="grp"><div class="flap" id="fs"></div><span class="lbl">ثانية</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 · gathering point -->
+    <section class="slide" data-i="5">
+      <div class="panel r" style="left:23.52%;top:23.91%;width:50.56%;height:37.76%;--d:.2">
+        <div class="fill" style="clip-path:url(#archGather);-webkit-clip-path:url(#archGather)"></div><svg class="arch-rim" viewBox="0 0 1 1" preserveAspectRatio="none" aria-hidden="true"><path d="M0.4908,0.0000 L0.4542,0.0110 L0.4286,0.0221 L0.4048,0.0331 L0.3846,0.0441 L0.3626,0.0552 L0.3425,0.0662 L0.3223,0.0772 L0.3040,0.0883 L0.2875,0.0993 L0.2711,0.1103 L0.2546,0.1214 L0.2399,0.1324 L0.2253,0.1434 L0.2125,0.1545 L0.1996,0.1655 L0.1868,0.1766 L0.1740,0.1876 L0.1630,0.1986 L0.1520,0.2097 L0.1410,0.2207 L0.1300,0.2317 L0.1209,0.2428 L0.1117,0.2538 L0.1044,0.2648 L0.0952,0.2759 L0.0861,0.2869 L0.0788,0.2979 L0.0733,0.3090 L0.0659,0.3200 L0.0604,0.3310 L0.0531,0.3421 L0.0476,0.3531 L0.0421,0.3641 L0.0385,0.3752 L0.0330,0.3862 L0.0293,0.3972 L0.0238,0.4083 L0.0201,0.4193 L0.0183,0.4303 L0.0147,0.4414 L0.0110,0.4524 L0.0092,0.4634 L0.0055,0.4745 L0.0037,0.4855 L0.0018,0.4966 L0.0000,0.5076 L0.0000,0.5186 L0.0000,0.5297 L0.0000,0.5407 L0.0000,0.5517 L0.0000,0.5628 L0.0000,0.5738 L0.0000,0.5848 L0.0000,0.5959 L0.0000,0.6069 L0.0000,0.6179 L0.0000,0.6290 L0.0000,0.6400 L0.0000,0.6510 L0.0000,0.6621 L0.0000,0.6731 L0.0000,0.6841 L0.0000,0.6952 L0.0000,0.7062 L0.0000,0.7172 L0.0000,0.7283 L0.0000,0.7393 L0.0000,0.7503 L0.0000,0.7614 L0.0000,0.7724 L0.0000,0.7834 L0.0000,0.7945 L0.0000,0.8055 L0.0000,0.8166 L0.0000,0.8276 L0.0000,0.8386 L0.0000,0.8497 L0.0000,0.8607 L0.0000,0.8717 L0.0000,0.8828 L0.0000,0.8938 L0.0000,0.9048 L0.0000,0.9159 L0.0000,0.9269 L0.0000,0.9379 L0.0000,0.9490 L0.0000,0.9600 L0.0000,0.9710 L0.0000,0.9821 L0.0000,0.9931 L0.0000,1.0000 L1.0000,1.0000 L1.0000,0.9931 L1.0000,0.9821 L1.0000,0.9710 L1.0000,0.9600 L1.0000,0.9490 L1.0000,0.9379 L1.0000,0.9269 L1.0000,0.9159 L1.0000,0.9048 L1.0000,0.8938 L1.0000,0.8828 L1.0000,0.8717 L1.0000,0.8607 L1.0000,0.8497 L1.0000,0.8386 L1.0000,0.8276 L1.0000,0.8166 L1.0000,0.8055 L1.0000,0.7945 L1.0000,0.7834 L1.0000,0.7724 L1.0000,0.7614 L1.0000,0.7503 L1.0000,0.7393 L1.0000,0.7283 L1.0000,0.7172 L1.0000,0.7062 L1.0000,0.6952 L1.0000,0.6841 L1.0000,0.6731 L1.0000,0.6621 L1.0000,0.6510 L1.0000,0.6400 L1.0000,0.6290 L1.0000,0.6179 L1.0000,0.6069 L1.0000,0.5959 L1.0000,0.5848 L1.0000,0.5738 L1.0000,0.5628 L1.0000,0.5517 L1.0000,0.5407 L1.0000,0.5297 L0.9982,0.5186 L0.9963,0.5076 L0.9945,0.4966 L0.9927,0.4855 L0.9908,0.4745 L0.9890,0.4634 L0.9853,0.4524 L0.9835,0.4414 L0.9799,0.4303 L0.9762,0.4193 L0.9725,0.4083 L0.9689,0.3972 L0.9652,0.3862 L0.9597,0.3752 L0.9542,0.3641 L0.9487,0.3531 L0.9432,0.3421 L0.9377,0.3310 L0.9304,0.3200 L0.9249,0.3090 L0.9176,0.2979 L0.9103,0.2869 L0.9011,0.2759 L0.8938,0.2648 L0.8846,0.2538 L0.8755,0.2428 L0.8663,0.2317 L0.8571,0.2207 L0.8462,0.2097 L0.8352,0.1986 L0.8242,0.1876 L0.8114,0.1766 L0.7985,0.1655 L0.7875,0.1545 L0.7729,0.1434 L0.7582,0.1324 L0.7436,0.1214 L0.7271,0.1103 L0.7106,0.0993 L0.6941,0.0883 L0.6758,0.0772 L0.6557,0.0662 L0.6355,0.0552 L0.6136,0.0441 L0.5934,0.0331 L0.5696,0.0221 L0.5440,0.0110 L0.5073,0.0000 Z"/></svg>
+        <div class="panel-body" style="padding-bottom:calc(var(--u)*7)">
+          <div class="gather">نقطة التجمع<br>والانطلاق إلى الحفل<small>افتح المسار في ويز وانطلق مباشرة</small></div>
+          <a class="gbtn interactive" style="margin-top:calc(var(--u)*5)" href="https://waze.com/ul?ll=33.29104%2C44.41556&amp;navigate=yes" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6.5-5.7-6.5-11a6.5 6.5 0 0 1 13 0c0 5.3-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
+            ابدأ المسار في Waze
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6 · doors close again -->
+    <section class="slide" data-i="6">
+      <div class="seam" style="right:calc(100% - 49.4%)"></div>
+      <div class="sealpos" style="right:calc(100% - 49.4%);top:40%">
+        <div class="seal r" style="--d:.4;cursor:default" aria-hidden="true"><svg viewBox="0 0 209.3 538.0"><use href="#logoSym" width="100%" height="100%"/></svg></div>
+      </div>
+      <div class="zone door-text" style="right:calc(100% - 49.4% - 24%);width:48%;top:54%">
+        <span class="r" style="--d:1.2">وفي حضوركم</span>
+        <b class="r" style="--d:1.9">يكتمل الفرح والسرور</b>
+        <div class="replaywrap r" style="--d:2.8"><button class="gbtn small interactive" id="replay">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v4h4"/></svg>
+          شاهد الدعوة من جديد</button></div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<nav class="nav away" id="nav" aria-label="التنقل بين صفحات الدعوة">
+  <div class="gnav">
+    <button id="prev" aria-label="الصفحة السابقة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button>
+    <div class="dots" id="dots"></div>
+    <button id="next" aria-label="الصفحة التالية"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+  </div>
+</nav>
+<div class="sound away" id="sound">
+  <div class="gsound" style="width:46px;height:46px">
+    <button id="soundBtn" aria-label="كتم الموسيقى أو تشغيلها">
+      <svg class="on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 10v4h4l5 4V6L8 10H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg>
+      <svg class="off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 10v4h4l5 4V6L8 10H4z"/><path d="M17 9l5 6M22 9l-5 6"/></svg>
+    </button>
+  </div>
+</div>
+<audio id="music" src="audio/zaffa.mp3" preload="auto" loop></audio>
+
+<script>
+(() => {
+  /* ================= settings ================= */
+  // النص القرآني — لتغييره عدّل السطر التالي فقط
+  const VERSE = "وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً";
+  const EVENT = Date.UTC(2026, 10, 7, 14, 0, 0);            // 7 Nov 2026, 17:00 Baghdad
+  const RAYS = { speed: 2.5, rayColor1: "#EAB308", rayColor2: "#FFD9A0", intensity: 2, spread: 2, origin: "top-left",
+                 tilt: 0, saturation: 1.5, blend: 0.75, falloff: 1.6, opacity: 1.0 };
+  const SHAKE = { move: 0.55, rot: 0.22, zoom: 1.035 };       // hand-held camera: % of frame, degrees, base zoom
+
+  const STILL = ["media/t1-start.jpg","media/t1-end.jpg","media/t2-end.jpg","media/t3-end.jpg","media/t4-end.jpg","media/t5-end.jpg","media/t6-end.jpg"];
+  const VIDEO = [null,"media/t1.mp4","media/t2.mp4","media/t3.mp4","media/t4.mp4","media/t5.mp4","media/t6.mp4"];
+  const FADE  = [0, .25, .3, .8, .3, 1.1, .3];
+  const N = STILL.length;
+
+  const $ = s => document.querySelector(s);
+  const stage = $("#stage"), world = $("#world"), vid = $("#vid"), music = $("#music");
+  const slides = [...document.querySelectorAll(".slide")];
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let A = $("#stillA"), B = $("#stillB");
+  let cur = 0, busy = false, started = false;
+  const wait = ms => new Promise(r => setTimeout(r, ms));
+
+
+  /* ================= Counter (port of React Bits <Counter/>) ================= */
+  function Counter(host, { value, places, fontSize, padding = 5, gap = 10, textColor = "inherit", fontWeight = 900, delay = 0 }) {
+    const height = fontSize + padding;
+    host.innerHTML = `<span class="counter-container"><span class="counter-counter" style="font-size:${fontSize}px;gap:${gap}px;color:${textColor};font-weight:${fontWeight}"></span></span>`;
+    const row = host.querySelector(".counter-counter");
+    const digits = places.map(place => {
+      const d = document.createElement("span"); d.className = "counter-digit"; d.style.height = height + "px";
+      const nums = Array.from({ length: 10 }, (_, i) => { const s = document.createElement("span"); s.className = "counter-number"; s.textContent = i; d.appendChild(s); return s; });
+      row.appendChild(d);
+      return { target: Math.floor(value / place) % 10, nums, v: 0, vel: 0 };
+    });
+    const paint = dg => dg.nums.forEach((s, n) => {
+      const pv = ((dg.v % 10) + 10) % 10; let off = (10 + n - pv) % 10, y = off * height; if (off > 5) y -= 10 * height;
+      s.style.transform = `translateY(${y}px)`;
+    });
+    digits.forEach(paint);
+    let raf = 0;
+    function play() {
+      cancelAnimationFrame(raf); digits.forEach(dg => { dg.v = 0; dg.vel = 0; paint(dg); });
+      if (reduce) { digits.forEach(dg => { dg.v = dg.target; paint(dg); }); return; }
+      const t0 = performance.now() + delay; let last = t0;
+      const step = now => {                         // spring: stiffness 100, damping 10, mass 1 (motion's defaults)
+        if (now < t0) { raf = requestAnimationFrame(step); return; }
+        const dt = Math.min(.032, (now - last) / 1000); last = now; let moving = false;
+        digits.forEach((dg, i) => {
+          if (now - t0 < i * 90) { moving = true; return; }
+          const f = -100 * (dg.v - dg.target) - 10 * dg.vel; dg.vel += f * dt; dg.v += dg.vel * dt;
+          if (Math.abs(dg.v - dg.target) > .001 || Math.abs(dg.vel) > .01) moving = true; else { dg.v = dg.target; dg.vel = 0; }
+          paint(dg);
+        });
+        if (moving) raf = requestAnimationFrame(step);
+      };
+      raf = requestAnimationFrame(step);
+    }
+    return { play };
+  }
+
+  /* ================= Split-flap (port of React Bits <SplitFlapText/>) ================= */
+  function SplitFlap(host, { width = 2, flipDuration = .12, stagger = .06, flipsPerChar = 8, charset = "0123456789",
+                              tileColor = "#2a170a", textColor = "#fff3dc", tileRadius = 6, gap = 4, fontSize = 30 }) {
+    host.className = "split-flap-text";
+    Object.entries({ "--split-flap-tile-color": tileColor, "--split-flap-text-color": textColor, "--split-flap-radius": tileRadius + "px",
+      "--split-flap-gap": gap + "px", "--split-flap-font-size": fontSize + "px", "--split-flap-flip-duration": flipDuration + "s" })
+      .forEach(([k, v]) => host.style.setProperty(k, v));
+    const tiles = Array.from({ length: width }, () => {
+      const el = document.createElement("span"); el.className = "split-flap-text__tile"; host.appendChild(el);
+      return { el, current: " ", raf: 0 };
+    });
+    const nb = c => c === " " ? "\u00A0" : c;
+    const draw = (t, current, next, flipping, tick) => {
+      t.el.innerHTML =
+        `<span class="split-flap-text__half split-flap-text__half--top"><span class="split-flap-text__char">${nb(current)}</span></span>
+         <span class="split-flap-text__half split-flap-text__half--bottom"><span class="split-flap-text__char">${nb(flipping ? next : current)}</span></span>` +
+        (flipping ? `<span class="split-flap-text__flap split-flap-text__flap--front" data-k="${tick}"><span class="split-flap-text__char">${nb(current)}</span></span>
+                     <span class="split-flap-text__flap split-flap-text__flap--back" data-k="${tick}"><span class="split-flap-text__char">${nb(next)}</span></span>` : "");
+    };
+    tiles.forEach(t => draw(t, " ", " ", false, 0));
+    function set(text, flips = 0) {
+      const target = String(text).padStart(width, " ").slice(-width);
+      tiles.forEach((t, i) => {
+        const to = target[i]; if (t.current === to && !flips) return;
+        cancelAnimationFrame(t.raf);
+        if (reduce) { t.current = to; draw(t, to, to, false, 0); return; }
+        const seq = []; for (let k = 0; k < flips; k++) seq.push(charset[Math.floor(Math.random() * charset.length)]); seq.push(to);
+        const ms = flipDuration * 1000, start = performance.now() + i * stagger * 1000; let stepDone = -1, from = t.current;
+        const tick = now => {
+          const el = now - start; if (el < 0) { t.raf = requestAnimationFrame(tick); return; }
+          const step = Math.floor(el / ms);
+          if (step < seq.length) {
+            if (step !== stepDone) { stepDone = step; draw(t, step === 0 ? from : seq[step - 1], seq[step], true, step); }
+            t.raf = requestAnimationFrame(tick);
+          } else { t.current = to; draw(t, to, to, false, 0); }
+        };
+        t.raf = requestAnimationFrame(tick);
+      });
+    }
+    return { set };
+  }
+
+
+  /* ================= Side Rays (port of React Bits <SideRays/>, plain WebGL) ================= */
+  function SideRays(canvas, p) {
+    const gl = canvas.getContext("webgl", { alpha: true, premultipliedAlpha: false, antialias: false });
+    if (!gl) return { resize() {} };
+    const hex = h => { const m = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(h); return m ? [1, 2, 3].map(i => parseInt(m[i], 16) / 255) : [1, 1, 1]; };
+    const flip = { "top-left": [1, 0], "bottom-right": [0, 1], "bottom-left": [1, 1] }[p.origin] || [0, 0];
+    const vs = `attribute vec2 position;void main(){gl_Position=vec4(position,0.0,1.0);}`;
+    const fs = `precision highp float;uniform float iTime;uniform vec2 iResolution;uniform float iSpeed;uniform vec3 iRayColor1;uniform vec3 iRayColor2;
+uniform float iIntensity;uniform float iSpread;uniform float iFlipX;uniform float iFlipY;uniform float iTilt;uniform float iSaturation;uniform float iBlend;uniform float iFalloff;uniform float iOpacity;
+float rayStrength(vec2 raySource,vec2 rayRefDirection,vec2 coord,float seedA,float seedB,float speed){vec2 sourceToCoord=coord-raySource;float cosAngle=dot(normalize(sourceToCoord),rayRefDirection);
+return clamp((0.45+0.15*sin(cosAngle*seedA+iTime*speed))+(0.3+0.2*cos(-cosAngle*seedB+iTime*speed)),0.0,1.0)*clamp((iResolution.x-length(sourceToCoord))/iResolution.x,0.5,1.0);}
+void main(){vec2 fragCoord=gl_FragCoord.xy;if(iFlipX>0.5)fragCoord.x=iResolution.x-fragCoord.x;if(iFlipY>0.5)fragCoord.y=iResolution.y-fragCoord.y;
+vec2 coord=vec2(fragCoord.x,iResolution.y-fragCoord.y);vec2 rayPos=vec2(iResolution.x*1.1,-0.5*iResolution.y);float tiltRad=iTilt*3.14159265/180.0;float cs=cos(tiltRad);float sn=sin(tiltRad);
+vec2 rel=coord-rayPos;vec2 tiltedCoord=vec2(rel.x*cs-rel.y*sn,rel.x*sn+rel.y*cs)+rayPos;float halfSpread=iSpread*0.275;
+vec2 rayRefDir1=normalize(vec2(cos(0.785398+halfSpread),sin(0.785398+halfSpread)));vec2 rayRefDir2=normalize(vec2(cos(0.785398-halfSpread),sin(0.785398-halfSpread)));
+vec4 rays1=vec4(iRayColor1,1.0)*rayStrength(rayPos,rayRefDir1,tiltedCoord,36.2214,21.11349,iSpeed);vec4 rays2=vec4(iRayColor2,1.0)*rayStrength(rayPos,rayRefDir2,tiltedCoord,22.3991,18.0234,iSpeed*0.2);
+vec4 color=rays1*(1.0-iBlend)*0.9+rays2*iBlend*0.9;float distanceToLight=length(fragCoord.xy-vec2(rayPos.x,iResolution.y-rayPos.y))/iResolution.y;
+float brightness=iIntensity*0.4/pow(max(distanceToLight,0.001),iFalloff);color.rgb*=brightness;float gray=dot(color.rgb,vec3(0.299,0.587,0.114));color.rgb=mix(vec3(gray),color.rgb,iSaturation);
+color.a=max(color.r,max(color.g,color.b))*iOpacity;gl_FragColor=color;}`;
+    const sh = (t, s) => { const o = gl.createShader(t); gl.shaderSource(o, s); gl.compileShader(o); return o; };
+    const pr = gl.createProgram(); gl.attachShader(pr, sh(gl.VERTEX_SHADER, vs)); gl.attachShader(pr, sh(gl.FRAGMENT_SHADER, fs)); gl.linkProgram(pr);
+    if (!gl.getProgramParameter(pr, gl.LINK_STATUS)) return { resize() {} };
+    gl.useProgram(pr);
+    const buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
+    const loc = gl.getAttribLocation(pr, "position"); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+    const U = n => gl.getUniformLocation(pr, n);
+    gl.uniform1f(U("iSpeed"), p.speed); gl.uniform3fv(U("iRayColor1"), hex(p.rayColor1)); gl.uniform3fv(U("iRayColor2"), hex(p.rayColor2));
+    gl.uniform1f(U("iIntensity"), p.intensity); gl.uniform1f(U("iSpread"), p.spread); gl.uniform1f(U("iFlipX"), flip[0]); gl.uniform1f(U("iFlipY"), flip[1]);
+    gl.uniform1f(U("iTilt"), p.tilt); gl.uniform1f(U("iSaturation"), p.saturation); gl.uniform1f(U("iBlend"), p.blend); gl.uniform1f(U("iFalloff"), p.falloff); gl.uniform1f(U("iOpacity"), p.opacity);
+    const uT = U("iTime"), uR = U("iResolution");
+    gl.enable(gl.BLEND); gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+    const resize = () => { const d = Math.min(1.25, devicePixelRatio || 1); canvas.width = canvas.clientWidth * d; canvas.height = canvas.clientHeight * d;
+      gl.viewport(0, 0, canvas.width, canvas.height); gl.uniform2f(uR, canvas.width, canvas.height); };
+    const loop = t => { gl.uniform1f(uT, t * .001); gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT); gl.drawArrays(gl.TRIANGLES, 0, 3); requestAnimationFrame(loop); };
+    resize(); requestAnimationFrame(loop);
+    return { resize };
+  }
+
+  /* ================= stage sizing ================= */
+  let rays;
+  function fit() {
+    const w = innerWidth, h = innerHeight, r = 9 / 16; let sw, sh;
+    if (w / h > .66) { sh = h; sw = h * r; } else if (w / h > r) { sw = w; sh = w / r; } else { sh = h; sw = h * r; }
+    stage.style.width = sw + "px"; stage.style.height = sh + "px";
+    document.documentElement.style.setProperty("--u", sw / 100 + "px");
+    sizeDust(); if (rays) rays.resize();
+  }
+  addEventListener("resize", fit);
+
+  /* ================= build content ================= */
+  const vEl = $("#verse"), words = VERSE.split(" ");
+  vEl.innerHTML = '<span class="w br" style="--wd:1">﴿</span> ' + words.map((w, i) => `<span class="w" style="--wd:${(1.3 + i * .24).toFixed(2)}">${w}</span>`).join(" ") +
+    ` <span class="w br" style="--wd:${(1.5 + words.length * .24).toFixed(2)}">﴾</span>`;
+  document.querySelectorAll("#logoDraw path").forEach(p => { const L = p.getTotalLength(); p.style.strokeDasharray = L; p.style.strokeDashoffset = L; });
+
+
+  const dots = $("#dots");
+  for (let i = 0; i < N; i++) dots.appendChild(document.createElement("i"));
+  function chrome() {
+    [...dots.children].forEach((d, i) => d.classList.toggle("cur", i === cur));
+    $("#prev").disabled = busy || cur <= 1; $("#next").disabled = busy || cur >= N - 1;
+    $("#nav").classList.toggle("away", cur === 0); $("#sound").classList.toggle("away", !started);
+  }
+
+  /* date counters + countdown flaps, sized from the stage */
+  let counters = [], flaps = {};
+  function buildDateWidgets() {
+    const u = stage.clientWidth / 100;
+    counters = [...document.querySelectorAll(".ctr")].map((el, i) => Counter(el, {
+      value: +el.dataset.v, places: el.dataset.places.split(",").map(Number),
+      fontSize: Math.round(u * (el.classList.contains("sm") ? 4.6 : 6.2)), padding: Math.round(u), gap: Math.max(1, Math.round(u * .4)),
+      textColor: el.classList.contains("sm") ? "#f3dcaa" : "#fff6e6", fontWeight: 700, delay: 350 + i * 120 }));
+    ["fd","fh","fm","fs"].forEach(k => flaps[k] = SplitFlap($("#" + k), { width: 2, fontSize: Math.round(u * 4.9), tileRadius: Math.round(u * 1), gap: Math.max(2, Math.round(u * .5)),
+      tileColor: "#2b170a", textColor: "#fff1d6", flipDuration: .12, stagger: .06, flipsPerChar: 8 }));
+  }
+
+  /* ================= slides ================= */
+  function showText(i) {
+    const s = slides[i]; s.classList.remove("hide"); s.classList.add("on");
+    if (i === 3) document.querySelectorAll("#logoDraw path").forEach(p => { p.style.animation = "none"; p.getBBox(); p.style.animation = ""; });
+    if (i === 4) { counters.forEach(c => c.play()); tick(true); }
+    requestAnimationFrame(() => requestAnimationFrame(() => s.classList.add("show")));
+  }
+  function hideText(i) { const s = slides[i]; s.classList.add("hide"); s.classList.remove("show"); return wait(520).then(() => s.classList.remove("on", "hide")); }
+
+  function preloadImg(src) { const im = new Image(); im.src = src; return im.decode ? im.decode().catch(() => {}) : Promise.resolve(); }
+  async function crossStill(src, dur = .9) {
+    await preloadImg(src);
+    B.style.setProperty("--fade", dur + "s"); B.style.opacity = 0; B.style.zIndex = 2; A.style.zIndex = 1; B.src = src;
+    await new Promise(r => requestAnimationFrame(r)); B.style.opacity = 1; await wait(dur * 1000);
+    A.style.opacity = 0; [A, B] = [B, A]; $("#backdrop").style.backgroundImage = `url(${src})`;
+  }
+  function setStillNow(src) { A.style.setProperty("--fade", "0s"); A.src = src; A.style.opacity = 1; A.style.zIndex = 2; B.style.opacity = 0; B.style.zIndex = 1; }
+  function warm(i) { if (VIDEO[i] && vid.dataset.src !== VIDEO[i]) { vid.src = VIDEO[i]; vid.dataset.src = VIDEO[i]; vid.load(); } }
+  function playClip(i) {
+    return new Promise(resolve => {
+      warm(i); vid.currentTime = 0; vid.style.opacity = 1; let blended = false;
+      const onTime = () => { if (!blended && vid.currentTime > .04) { blended = true; A.style.setProperty("--fade", FADE[i] + "s"); A.style.opacity = 0; } };
+      const done = async () => {
+        vid.removeEventListener("timeupdate", onTime); vid.removeEventListener("ended", done); clearTimeout(guard);
+        await preloadImg(STILL[i]); setStillNow(STILL[i]); await new Promise(r => requestAnimationFrame(r));
+        vid.style.opacity = 0; $("#backdrop").style.backgroundImage = `url(${STILL[i]})`; resolve();
+      };
+      vid.addEventListener("timeupdate", onTime); vid.addEventListener("ended", done);
+      const guard = setTimeout(done, 15000);
+      const p = vid.play(); if (p && p.catch) p.catch(() => { crossStill(STILL[i], .9).then(done); });
+    });
+  }
+  async function go(to) {
+    if (busy || to < 0 || to >= N || to === cur) return;
+    busy = true; chrome(); const from = cur;
+    await hideText(from);
+    if (to === from + 1) await playClip(to); else await crossStill(STILL[to], .9);
+    cur = to; busy = false; if (VIDEO[cur + 1]) warm(cur + 1);
+    showText(cur); chrome();
+  }
+  const next = () => go(cur + 1), prev = () => go(cur - 1);
+  $("#next").onclick = next; $("#prev").onclick = prev;
+
+  slides[0].querySelector(".seal").addEventListener("click", async e => {
+    if (busy) return; e.currentTarget.classList.add("broken"); startMusic(); started = true; chrome(); await wait(450); next();
+  });
+  $("#replay").addEventListener("click", async () => {
+    if (busy) return; busy = true; await hideText(6); await crossStill(STILL[0], .8); cur = 0; busy = false;
+    slides[0].querySelector(".seal").classList.remove("broken"); warm(1); showText(0); chrome();
+  });
+
+  /* ================= music ================= */
+  let muted = false;
+  function startMusic() {
+    music.volume = 0; const p = music.play(); if (p && p.catch) p.catch(() => {});
+    let v = 0; const t = setInterval(() => { v = Math.min(1, v + .05); if (!muted) music.volume = v * .85; if (v >= 1) clearInterval(t); }, 90);
+  }
+  $("#soundBtn").onclick = () => { muted = !muted; music.muted = muted; $("#sound").classList.toggle("muted", muted); if (!muted && music.paused) music.play().catch(() => {}); };
+  document.addEventListener("visibilitychange", () => { if (document.hidden) music.pause(); else if (started && !muted) music.play().catch(() => {}); });
+
+  /* ================= swipe + keys ================= */
+  let sy = null, sx = null;
+  stage.addEventListener("touchstart", e => { sy = e.touches[0].clientY; sx = e.touches[0].clientX; }, { passive: true });
+  stage.addEventListener("touchend", e => {
+    if (sy === null || cur === 0) return;
+    const dy = e.changedTouches[0].clientY - sy, dx = e.changedTouches[0].clientX - sx;
+    if (Math.abs(dy) > 50 && Math.abs(dy) > Math.abs(dx)) dy < 0 ? next() : prev(); else if (Math.abs(dx) > 50) dx < 0 ? next() : prev();
+    sy = sx = null;
+  }, { passive: true });
+  addEventListener("keydown", e => { if (cur === 0) return; if (["ArrowLeft","ArrowDown","PageDown"].includes(e.key)) next(); if (["ArrowRight","ArrowUp","PageUp"].includes(e.key)) prev(); });
+
+  /* ================= countdown ================= */
+  const pad = n => String(n).padStart(2, "0");
+  let tickTimer = 0;
+  function tick(intro) {
+    clearTimeout(tickTimer);
+    const ms = EVENT - Date.now();
+    if (ms <= 0) { const c = $("#count"); c.className = "count done"; c.textContent = "حلّ موعد الفرح، أهلاً بكم"; return; }
+    const s = Math.floor(ms / 1000), f = intro ? 8 : 0;
+    flaps.fd.set(pad(Math.min(99, Math.floor(s / 86400))), f); flaps.fh.set(pad(Math.floor(s % 86400 / 3600)), f);
+    flaps.fm.set(pad(Math.floor(s % 3600 / 60)), f); flaps.fs.set(pad(s % 60), f);
+    tickTimer = setTimeout(() => tick(false), 1000 - Date.now() % 1000);
+  }
+
+
+  /* ================= dust + hand-held camera ================= */
+  const cv = $("#dust"), cx = cv.getContext("2d"); let motes = [];
+  function sizeDust() {
+    const d = Math.min(2, devicePixelRatio || 1); cv.width = stage.clientWidth * d; cv.height = stage.clientHeight * d;
+    motes = Array.from({ length: 34 }, () => ({ x: Math.random(), y: Math.random(), r: (.6 + Math.random() * 1.8) * d, vy: .00006 + Math.random() * .00016,
+      vx: (Math.random() - .5) * .00005, a: .15 + Math.random() * .45, p: Math.random() * 6.3 }));
+  }
+  const n3 = (t, a, b, c, o) => Math.sin(t * a + o) * .6 + Math.sin(t * b + o * 1.7) * .3 + Math.sin(t * c + o * 2.3) * .1;
+  function frame(t) {
+    // hand-held: layered slow sines, like a camera operator breathing and drifting
+    const x = n3(t, .00043, .00119, .0029, .4) * SHAKE.move, y = n3(t, .00037, .00101, .0033, 2.1) * SHAKE.move, r = n3(t, .00029, .00083, .0023, 4.2) * SHAKE.rot;
+    world.style.transform = `translate(${x}%, ${y}%) rotate(${r}deg) scale(${SHAKE.zoom})`;
+    cx.clearRect(0, 0, cv.width, cv.height);
+    for (const m of motes) {
+      m.y -= m.vy; m.x += m.vx + Math.sin(t / 2600 + m.p) * .00006; if (m.y < -.02) { m.y = 1.02; m.x = Math.random(); }
+      const tw = .6 + .4 * Math.sin(t / 900 + m.p), X = m.x * cv.width, Y = m.y * cv.height, g = cx.createRadialGradient(X, Y, 0, X, Y, m.r * 4);
+      g.addColorStop(0, `rgba(255,224,160,${m.a * tw})`); g.addColorStop(1, "rgba(255,200,120,0)"); cx.fillStyle = g; cx.beginPath(); cx.arc(X, Y, m.r * 4, 0, 7); cx.fill();
+    }
+    requestAnimationFrame(frame);
+  }
+
+  /* ================= boot ================= */
+  fit();
+  rays = reduce ? null : SideRays($("#rays"), RAYS);
+  buildDateWidgets(); chrome(); warm(1); STILL.forEach(preloadImg);
+  if (!reduce) requestAnimationFrame(frame); else world.style.transform = `scale(${SHAKE.zoom})`;
+  const jump = /[?&#]s=(\d)/.exec(location.search + location.hash);
+  if (jump) { cur = +jump[1]; setStillNow(STILL[cur]); }
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => { showText(cur); chrome(); });
+})();
+</script>
+</body>
+</html>
